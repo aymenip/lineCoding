@@ -30,4 +30,18 @@ Simulation of Line Coding Schemes : `Unipolar`,`NRZ-L`, `NRZ-I`, `Polar-RZ`,`Dif
 
 ![alt text](https://github.com/aymenip/lineCoding/blob/master/instructions/4.png?row=true)
 
+5.  Screenshots
+
+            home page
+
+    ![alt text](https://github.com/aymenip/lineCoding/blob/master/instructions/home.png?row=true)
+
+            encode page
+
+    ![alt text](https://github.com/aymenip/lineCoding/blob/master/instructions/encode.png?row=true)
+
+            result page
+
+    ![alt text](https://github.com/aymenip/lineCoding/blob/master/instructions/result.png?row=true)
+
 ---

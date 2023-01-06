@@ -100,13 +100,13 @@ def Manchester(sequence):
 def Differential_manchester(sequence):
     y_axis = []
     x_axis = []
-    bit = 1
     k = 0
+    bit = 1
     y_axis.append(bit)
     x_axis.append(k)
     for i in sequence:
         if i == 0:
-            y_axis.append(bit * (-1))
+            y_axis.append(-bit)
             x_axis.append(k)
             k += 1
             y_axis.append(bit)
@@ -115,9 +115,9 @@ def Differential_manchester(sequence):
             y_axis.append(bit)
             x_axis.append(k)
             k += 1
-            bit = bit * (-1)
-            y_axis.append(bit)
+            y_axis.append(-bit)
             x_axis.append(k)
+
     return x_axis, y_axis
 
 
@@ -233,7 +233,7 @@ def plot_manchester(sequence):
 def plot_differential_manchester(sequence):
     ax = plt.subplot()
     plt.ylabel("Differential Manchester")
-    logic = "Negative Logic"
+    logic = "Positive Logic"
     plt.xlabel(logic)
     x, y = Differential_manchester(sequence)
     plt.step(x, y, where='mid', marker='.', linewidth=4.0,
