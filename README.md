@@ -6,9 +6,11 @@ Simulation of Line Coding Schemes : `Unipolar`,`NRZ-L`, `NRZ-I`, `Polar-RZ`,`Dif
 
 **To Run This On Your Local Machine**
 
-1.  Clone This Repo
+1.  Clone This Repo or Download it
 
         git clone https://github.com/aymenip/lineCoding
+        
+        ![alt text](http://url/to/img.png)
 
 2.  Change Working Directory
 
