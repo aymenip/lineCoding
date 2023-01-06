@@ -1,0 +1,14 @@
+{% extends "encoder/base.html" %} {% block content %}
+<center>
+  <center>
+    <div class="container mt-15">
+      <div class="btn-container">
+        <a class="links" href="{% url 'encode' %}">Encode</a>
+      </div>
+      <div class="btn-container">
+        <a class="links disabled" href="{% url 'decode' %}">Decode</a>
+      </div>
+    </div>
+  </center>
+</center>
+{% endblock content %}

@@ -1,0 +1,14 @@
+{% extends "encoder/base.html" %} {% block content %}
+<center>
+  <h1 class="display-5 mt-4">{{scheme_choice}}</h1>
+  <div class="container">
+    <p>The Largest Palindromic SubString Is {{palindrome}}</p>
+    <img
+      width="700px"
+      src="data:image/png;base64,{{ uri}} "
+      class="img-fluid"
+      alt="Encoded Signal"
+    />
+  </div>
+</center>
+{% endblock content %}
