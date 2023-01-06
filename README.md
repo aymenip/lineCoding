@@ -9,8 +9,8 @@ Simulation of Line Coding Schemes : `Unipolar`,`NRZ-L`, `NRZ-I`, `Polar-RZ`,`Dif
 1.  Clone This Repo or Download it
 
         git clone https://github.com/aymenip/lineCoding
-        
-        ![alt text](http://url/to/img.png)
+
+        ![alt text](https://github.com/aymenip/lineCoding/blob/master/instructions/1.png)
 
 2.  Change Working Directory
 
@@ -25,4 +25,3 @@ Simulation of Line Coding Schemes : `Unipolar`,`NRZ-L`, `NRZ-I`, `Polar-RZ`,`Dif
         python manage.py runserver
 
 ---
-
