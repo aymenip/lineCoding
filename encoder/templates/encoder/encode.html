@@ -2,27 +2,13 @@
 
 <script>
   $(document).ready(function () {
-    $("#id_fixed_sequence").click(function () {
-      $("#fixed_seq").hide();
-      $("#bit_size").show();
-    });
-
     $("#id_custom").click(function () {
       if ($(this).is(":checked")) {
-        $("#custom_bits").show();
-        $("#bit_size").hide();
+        $("#id_bit_size").attr("disabled", "disabled");
+        $("#id_custom_bits").removeAttr("disabled");
       } else {
-        $("#bit_size").show();
-        $("#custom_bits").hide();
-      }
-    });
-
-    $("#id_scheme_choice").click(function () {
-      var selection = $("#id_scheme_choice :selected").text();
-      if (selection == "AMI") {
-        $("#scrambling").show();
-      } else {
-        $("#scrambling").hide();
+        $("#id_custom_bits").attr("disabled", "disabled");
+        $("#id_bit_size").removeAttr("disabled");
       }
     });
   });
@@ -32,20 +18,19 @@
   <form method="POST">
     {% csrf_token %}
     <div class="row">
-      <span style="display: none" id="custom_bits">
+      <span id="custom_bits">
+        <label for="state">Enter custom signale : </label>
         {{form.custom_bits}}
-        <label for="state"> number of bits to be generated</label>
       </span>
 
       <div id="custom " class="mt-25">
-        {{form.custom}} I would like to enter Signal Manually.
+        {{form.custom}} I would like to enter signal manually.
       </div>
       <div id="bit_size" class="mt-25">
-        Enter number of bits to be generated : {{form.bit_size}}
+        Enter number of bits : {{form.bit_size}}
       </div>
       <div id="schemes" class="mt-25">
         Select Encoding Scheme {{form.scheme_choice}}
-        <span class="ml-5">{{form.pos_logic}} Positive logic. </span>
       </div>
     </div>
     <button type="submit" class="btn btn-success mt-25">Submit</button>

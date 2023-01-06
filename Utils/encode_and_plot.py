@@ -6,22 +6,18 @@ import matplotlib
 matplotlib.use("Agg")
 
 
-def unipolar(sequence, pos_logic=True):
+def unipolar(sequence):
     bit = 1
-    if not pos_logic:
-        bit = -1
     sequence_mod = [bit if i == 1 else 0 for i in sequence]
     sequence_mod.insert(0, sequence_mod[0])
     return sequence_mod
 
 
-def unipolar_rz(sequence, pos_logic=True):
+def unipolar_rz(sequence):
     bit = 1
     x_axis = []
     y_axis = []
     k = 0
-    if not pos_logic:
-        bit = -1
     for i in sequence:
         if i == 0:
             y_axis.append(0)
@@ -38,19 +34,15 @@ def unipolar_rz(sequence, pos_logic=True):
     return x_axis, y_axis
 
 
-def polar_nrz_l(sequence, pos_logic=True):
+def polar_nrz_l(sequence):
     bit = 1
-    if not pos_logic:
-        bit = -1
     sequence_mod = [bit*(-1) if i == 0 else bit for i in sequence]
     sequence_mod.insert(0, sequence_mod[0])
     return sequence_mod
 
 
-def polar_nrz_i(sequence, pos_logic=True):
+def polar_nrz_i(sequence):
     bit = -1
-    if not pos_logic:
-        bit = 1
     sequence_mod = []
     sequence_mod.insert(0, bit)
     for i in range(len(sequence)):
@@ -62,13 +54,11 @@ def polar_nrz_i(sequence, pos_logic=True):
     return sequence_mod
 
 
-def polar_rz(sequence, pos_logic=True):
+def polar_rz(sequence):
     bit = 1
     x_axis = []
     y_axis = []
     k = 0
-    if not pos_logic:
-        bit = -1
     for i in sequence:
         if i == 0:
             y_axis.append(bit)
@@ -86,13 +76,11 @@ def polar_rz(sequence, pos_logic=True):
     return x_axis, y_axis
 
 
-def Manchester(sequence, ieee_scheme=False):
+def Manchester(sequence):
     y_axis = []
     x_axis = []
     k = 0
     bit = -1
-    if ieee_scheme:
-        bit = 1
     for i in range(len(sequence)):
         if sequence[i] == 1:
             x_axis.append(k)
@@ -109,12 +97,10 @@ def Manchester(sequence, ieee_scheme=False):
     return x_axis, y_axis
 
 
-def Differential_manchester(sequence, pos_logic=True):
+def Differential_manchester(sequence):
     y_axis = []
     x_axis = []
     bit = 1
-    if not pos_logic:
-        bit = -1
     k = 0
     y_axis.append(bit)
     x_axis.append(k)
@@ -135,11 +121,9 @@ def Differential_manchester(sequence, pos_logic=True):
     return x_axis, y_axis
 
 
-def AMI(sequence, pos_logic=True):
+def AMI(sequence):
     bit = 1
     sequence_mod = [0] * len(sequence)
-    if not pos_logic:
-        bit = -1
     sequence_mod.insert(0, sequence[0]*bit)
     for i in range(len(sequence)):
         if sequence[i] == 1:
@@ -150,15 +134,13 @@ def AMI(sequence, pos_logic=True):
     return sequence_mod
 
 
-def plot_unipolar(sequence, pos=True):
+def plot_unipolar(sequence):
     ax = plt.subplot()
     plt.ylabel("Unipolar")
     x = np.arange(len(sequence))
     logic = "Positive Logic"
-    if not pos:
-        logic = "Negative Logic"
     plt.xlabel(logic)
-    plt.plot(unipolar(sequence, pos), color='red',
+    plt.plot(unipolar(sequence), color='red',
              drawstyle='steps-pre', linewidth=4.0)
     ax.grid(True, linestyle='--')
     ax.set_xticks(range(0, len(sequence)+1))
@@ -175,15 +157,13 @@ def plot_unipolar(sequence, pos=True):
     return image_base64
 
 
-def plot_nrz_l(sequence, pos=True):
+def plot_nrz_l(sequence):
     ax = plt.subplot()
     plt.ylabel("NRZ-L")
     logic = "Positive Logic"
-    if not pos:
-        logic = "Negative Logic"
     plt.xlabel(logic)
     x = np.arange(len(sequence))
-    plt.plot(polar_nrz_l(sequence, pos), color='red', drawstyle='steps-pre',
+    plt.plot(polar_nrz_l(sequence), color='red', drawstyle='steps-pre',
              marker='.', linewidth=4.0, markersize=18, markerfacecolor='blue')
     ax.grid(True, linestyle='--')
     ax.set_xticks(range(0, len(sequence)+1))
@@ -200,14 +180,12 @@ def plot_nrz_l(sequence, pos=True):
     return image_base64
 
 
-def plot_nrz_i(sequence, pos=True):
+def plot_nrz_i(sequence):
     ax = plt.subplot()
     plt.ylabel("NRZ-I")
     logic = "Positive Logic"
-    if not pos:
-        logic = "Negative Logic"
     plt.xlabel(logic)
-    y = polar_nrz_i(sequence, pos)
+    y = polar_nrz_i(sequence)
     markers = ['o' if y[i] == y[i-1] else 'x' for i in range(1, len(y))]
     x = np.arange(len(y))
     plt.plot(x, y, color='red', drawstyle='steps-pre',
@@ -229,14 +207,12 @@ def plot_nrz_i(sequence, pos=True):
     return image_base64
 
 
-def plot_manchester(sequence, ieee=False):
+def plot_manchester(sequence):
     ax = plt.subplot()
     plt.ylabel("Manchester")
-    logic = "G.E Thomas Logic"
-    if ieee:
-        logic = "IEEE Logic"
+    logic = "Positive Logic"
     plt.xlabel(logic)
-    x, y = Manchester(sequence, ieee)
+    x, y = Manchester(sequence)
     plt.step(x, y, where='mid', marker='.', linewidth=4.0,
              markersize=20, color='red', markerfacecolor='blue')
     ax.grid(True, linestyle='--')
@@ -254,14 +230,12 @@ def plot_manchester(sequence, ieee=False):
     return image_base64
 
 
-def plot_differential_manchester(sequence, pos=True):
+def plot_differential_manchester(sequence):
     ax = plt.subplot()
     plt.ylabel("Differential Manchester")
     logic = "Negative Logic"
-    if pos:
-        logic = "Positive Logic"
     plt.xlabel(logic)
-    x, y = Differential_manchester(sequence, pos)
+    x, y = Differential_manchester(sequence)
     plt.step(x, y, where='mid', marker='.', linewidth=4.0,
              markersize=20, color='red', markerfacecolor='blue')
     ax.grid(True, linestyle='--')
@@ -279,14 +253,13 @@ def plot_differential_manchester(sequence, pos=True):
     return image_base64
 
 
-def plot_ami(sequence, pos=True):
+def plot_ami(sequence):
     ax = plt.subplot()
     plt.ylabel("AMI")
     logic = "Negative Logic"
-    if pos:
-        logic = "Positive Logic"
+
     plt.xlabel(logic)
-    plt.plot(AMI(sequence, pos), color='red', drawstyle='steps-pre',
+    plt.plot(AMI(sequence), color='red', drawstyle='steps-pre',
              marker='.', linewidth=4.0, markersize=20, markerfacecolor='blue')
     ax.grid(True, linestyle='--')
     ax.set_xticks(range(0, len(sequence)+1))

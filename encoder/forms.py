@@ -17,16 +17,17 @@ class EncoderForm(forms.ModelForm):
         "class": "form-control",
         "type": "text",
         "placeholder": "101010110",
-    }), required=False)
+        "disabled": "disabled",
+
+    }), required=True)
     bit_size = forms.CharField(widget=forms.TextInput(attrs={
         "class": "form-control",
-        "required": "false"
-    }), required=False)
+
+    }), required=True)
     scheme_choice = forms.CharField(widget=forms.Select(attrs={
         "class": "form-control",
-        "required": "false"
     },
-        choices=SCHEMES), required=False)
+        choices=SCHEMES))
 
     class Meta:
         model = Encoder
