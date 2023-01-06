@@ -9,8 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-import django_heroku
-import dj_database_url
+
 from pathlib import Path
 
 
@@ -27,7 +26,7 @@ SECRET_KEY = '-7+kst@yl*1=al5a4w&az&gdtwv+$u0n7x_xaqles^&pjah0n9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
 
 
 # Application definition
@@ -129,4 +128,3 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
-django_heroku.settings(locals())

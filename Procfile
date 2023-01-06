@@ -1,1 +1,0 @@
-web gunicorn Line_Encoder_Decoder.wsgi --log-file -
