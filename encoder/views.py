@@ -40,9 +40,6 @@ def encode(request):
         pal_img['palindrome'] = generator.manachers_algorithm(seq)
         request.session['data_img'] = pal_img
         return redirect('results', scheme=scheme)
-        # else:
-        #     print("Error! Check Form Validation!")
-        #     print(form.errors)
     return render(request, 'encoder/encode.html', {'title': "Encode", 'form': form})
 
 
@@ -58,6 +55,8 @@ def results(request, scheme):
     data = request.session.get('temp_data')
     pal = (request.session.get('data_img'))['palindrome']
     pal = [str(i) for i in pal]
+    data['scheme_choice'] = str(scheme)
     data['palindrome'] = "".join(pal)
     data['uri'] = (request.session.get('data_img'))['uri']
+
     return render(request, 'encoder/result.html', data)

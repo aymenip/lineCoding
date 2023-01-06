@@ -26,11 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '-7+kst@yl*1=al5a4w&az&gdtwv+$u0n7x_xaqles^&pjah0n9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ['https://*'
-                        'http://*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
