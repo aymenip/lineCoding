@@ -1,0 +1,1 @@
+web: python manage.py migrate && gunicorn Line_Encoder_Decoder.wsgi
