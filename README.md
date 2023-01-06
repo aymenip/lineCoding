@@ -1,7 +1,5 @@
 # Line Encoder Decoder
 
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-
 Simulation of Line Coding Schemes : `Unipolar`,`NRZ-L`, `NRZ-I`, `Polar-RZ`,`Differential Manchester`,`Manchester` , `AMI`.
 
 ---
